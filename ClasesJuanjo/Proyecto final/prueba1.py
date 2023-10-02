@@ -12,7 +12,7 @@ with open('prueba.csv') as File:
     # Itera a través de las filas del archivo CSV
     for row in reader:
         day_of_week = row['date']
-        province = row['province']
+        province = row['province'] 
         
         # Suma los valores para cada clave (día de la semana y provincia)
         data_by_day_province[day_of_week][province] += int(row['num_def'])

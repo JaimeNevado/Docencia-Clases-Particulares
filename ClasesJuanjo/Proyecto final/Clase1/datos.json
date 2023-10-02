@@ -1,0 +1,21 @@
+{
+	"nombre": "Juan Pérez",
+	"edad": 30,
+	"ciudad": "Ciudad de México",
+	"email": "juan@example.com",
+	"intereses": [
+		"programación",
+		"viajes",
+		"deportes"
+	],
+	"amigos": [
+		{
+			"nombre": "Ana Rodríguez",
+			"edad": 28
+		},
+		{
+			"nombre": "Carlos López",
+			"edad": 32
+		}
+	]
+}
