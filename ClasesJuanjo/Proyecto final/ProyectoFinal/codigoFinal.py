@@ -28,7 +28,7 @@ def buscar_elementos(provincia, diaParametro):
 
 
 crear_lista_provincias()
-buscar_elementos("Málaga", "Martes")
+buscar_elementos("Melilla", "Viernes")
 
 # Ensure_ascii hace que las tildes se escriban correctamente.
 json.dump(resultados, archivo_json, ensure_ascii=False)
