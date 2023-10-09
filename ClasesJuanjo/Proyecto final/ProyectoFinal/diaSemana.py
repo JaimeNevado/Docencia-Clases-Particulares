@@ -1,7 +1,7 @@
 from datetime import datetime
 
 # Fecha en formato AAAA-MM-DD
-fecha = "2001-04-24"
+fecha = "2021-05-31"
 
 
 # Convierte la fecha a un objeto datetime

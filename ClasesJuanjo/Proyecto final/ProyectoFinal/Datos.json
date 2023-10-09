@@ -1,1 +1,37 @@
-[["MELILLA", "Viernes", "0", "0", "0", "0"], ["MELILLA", "Viernes", "0", "0", "1", "1"], ["MELILLA", "Viernes", "0", "0", "1", "0"], ["MELILLA", "Viernes", "0", "0", "3", "0"]]
+[
+	{
+		"province": "Málaga",
+		"num_def": "0",
+		"new_cases": "0",
+		"num_hosp": "6",
+		"num_uci": "0"
+	},
+	{
+		"province": "Málaga",
+		"num_def": "0",
+		"new_cases": "0",
+		"num_hosp": "9",
+		"num_uci": "1"
+	},
+	{
+		"province": "Málaga",
+		"num_def": "0",
+		"new_cases": "0",
+		"num_hosp": "7",
+		"num_uci": "3"
+	},
+	{
+		"province": "Málaga",
+		"num_def": "0",
+		"new_cases": "0",
+		"num_hosp": "15",
+		"num_uci": "1"
+	},
+	{
+		"province": "Málaga",
+		"num_def": "1",
+		"new_cases": "0",
+		"num_hosp": "12",
+		"num_uci": "2"
+	}
+]

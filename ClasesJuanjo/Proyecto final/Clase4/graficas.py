@@ -14,3 +14,4 @@ plt.title('Gráfico de Barras Ejemplo')
 
 # Mostrar el gráfico
 plt.show()
+
