@@ -1,6 +1,7 @@
 [
 	{
 		"province": "Málaga",
+		"dia_sem": "Lunes",
 		"num_def": "0",
 		"new_cases": "0",
 		"num_hosp": "6",
@@ -8,6 +9,7 @@
 	},
 	{
 		"province": "Málaga",
+		"dia_sem": "Lunes",
 		"num_def": "0",
 		"new_cases": "0",
 		"num_hosp": "9",
@@ -15,6 +17,7 @@
 	},
 	{
 		"province": "Málaga",
+		"dia_sem": "Lunes",
 		"num_def": "0",
 		"new_cases": "0",
 		"num_hosp": "7",
@@ -22,6 +25,7 @@
 	},
 	{
 		"province": "Málaga",
+		"dia_sem": "Lunes",
 		"num_def": "0",
 		"new_cases": "0",
 		"num_hosp": "15",
@@ -29,6 +33,7 @@
 	},
 	{
 		"province": "Málaga",
+		"dia_sem": "Lunes",
 		"num_def": "1",
 		"new_cases": "0",
 		"num_hosp": "12",

@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 
 archivo = open("prueba.csv", "r")
-archivo_json = open("Datos.json", "r+")
+archivo_json = open("datos.json", "w")
 copia = list(csv.DictReader(archivo))
 lineas = copia
 provincias = []
@@ -34,6 +34,7 @@ def buscar_elementos(provincia, dia_a_buscar):
 		if elemento["province"]==provincia and nombreDiaEncontrado == dia_a_buscar:
 			datos = {
 				"province" : elemento["province"],
+				"dia_sem" : nombreDiaEncontrado,
 				"num_def" : elemento["num_def"],
 				"new_cases" : elemento["new_cases"],
 				"num_hosp" : elemento["num_hosp"],
@@ -49,9 +50,3 @@ buscar_elementos(provincia_A_buscar, dia_A_buscar)
 
 # Ensure_ascii hace que las tildes se escriban correctamente.
 json.dump(listaDatos, archivo_json, ensure_ascii=False)
-
-# Escribir en archivo y leer de archivo
-lectura_archivo = archivo_json.readlines()
-archivo_json.close()
-
-# Gráficas
