@@ -2,13 +2,13 @@ import matplotlib.pyplot as plt
 import json
 
 # Cargar datos desde el archivo JSON
-archivo_json = open("Datos.json", "r", encoding="utf-8")
+archivo_json = open("datos.json", "r", encoding="utf-8")
 datos = json.load(archivo_json)
 
-max_num_def = 0
-max_new_cases = 0
-max_num_hosp = 0
-max_num_uci = 0
+max_num_def = -1
+max_new_cases = -1
+max_num_hosp = -1
+max_num_uci = -1
 
 for elemento in datos:
     if (int(elemento["num_def"]) > max_num_def):
@@ -39,25 +39,25 @@ while True:
         etiquetas = ["Número defunciones"]
         tamaños = [max_num_def]  # Valores que representan el tamaño de cada sector
         plt.pie(tamaños, labels=etiquetas, autopct='%1.1f%%', startangle=90)
-        plt.title("Gráfica con los Número de defunciones")
+        plt.title(f'Gráfica con el Número máximo de defunciones ({provincia_max_def})')
         plt.show()
     elif opcion == 2:
         etiquetas = ["Nuevos casos"]
         tamaños = [max_new_cases]  # Valores que representan el tamaño de cada sector
         plt.pie(tamaños, labels=etiquetas, autopct='%1.1f%%', startangle=90)
-        plt.title("Gráfica con los Nuevos Casos")
+        plt.title(f"Gráfica con el máximo de Nuevos Casos ({provincia_max_new_cases})")
         plt.show()
     elif opcion == 3:
         etiquetas = ["Número de Hospitalizados"]
-        tamaños = [max_new_cases]  # Valores que representan el tamaño de cada sector
+        tamaños = [max_num_hosp]  # Valores que representan el tamaño de cada sector
         plt.pie(tamaños, labels=etiquetas, autopct='%1.1f%%', startangle=90)
-        plt.title("Gráfica con el Número de Hospitalizados")
+        plt.title(f"Gráfica con el máximo Número de Hospitalizados ({provincia_max_num_hosp})")
         plt.show()
     elif opcion == 4:
         etiquetas = ["Número en UCI"]
-        tamaños = [max_new_cases]  # Valores que representan el tamaño de cada sector
+        tamaños = [max_num_uci]  # Valores que representan el tamaño de cada sector
         plt.pie(tamaños, labels=etiquetas, autopct='%1.1f%%', startangle=90)
-        plt.title("Gráfica con el Número de UCI")
+        plt.title(f"Gráfica con el máximo Número de UCI ({provincia_max_num_uci})")
         plt.show()
     elif opcion == 5:
         break
