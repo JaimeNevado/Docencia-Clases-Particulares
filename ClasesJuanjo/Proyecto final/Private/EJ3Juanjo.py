@@ -4,57 +4,36 @@ import json
 archivo= open("datos.json","r")
 lineas= json.load(archivo)
 
+# Bucle para buscar las provincias
+provincias = []
+for elemento in lineas:
+    if elemento["province"] not in provincias:
+        provincias.append(elemento["province"])
+
+def sumar_valores(provincia, buscar):
+    valor = 0
+    for elemento in lineas:
+        if (elemento["province"] == provincia):
+            valor = valor + int(elemento[buscar])
+    return valor
+
 # Máximo
-max_num_def = 0
-provincia_max_num_def = ""
-
-max_new_cases = 0
-provincia_max_new_cases = ""
-
-max_num_hosp = 0
-provincia_max_num_hosp = ""
-
-max_num_UCI = 0
-provincia_max_UCI = ""
+def provincia_maxima(buscar):
+    numero_max = -1
+    for provincia in provincias:
+        if sumar_valores(provincia, buscar) > numero_max:
+            provincia_max = provincia
+            numero_max = sumar_valores(provincia, buscar)
+    return provincia_max
 
 # Mínimo
-min_num_def = 1000
-provincia_mim_num_def = ""
-
-min_nuew_cases = 1000
-provincia_min_new_cases = ""
-
-min_num_hosp = 1000
-provincia_min_num_hosp = ""
-
-min_num_UCI = 1000
-provincia_min_UCI = ""
-
-
-
-for elemento in lineas:
-    # Máximo
-    if max_num_def < int(elemento["num_def"]):
-        max_num_def=int(elemento["num_def"])
-        provincia_max_num_def=elemento["province"]
-    
-    if max_new_cases < int(elemento["new_cases"]):
-        max_new_cases=int(elemento["new_cases"])
-        provincia_max_new_cases=elemento["province"]
-    
-    if max_num_hosp < int(elemento["num_hosp"]):
-        max_num_hosp=int(elemento["num_hosp"])
-        provincia_max_num_hosp=elemento["province"]
-    
-    if max_num_UCI < int(elemento["num_uci"]):
-        max_num_UCI=int(elemento["num_uci"])
-        provincia_max_num_UCI=elemento["province"]
-    # Mínimo
-
-    
-
-etiquetas = ["Num Uci"]
-valores = [max_num_UCI]
+def provincia_min(buscar):
+    numero_min = 99999
+    for provincia in provincias:
+        if sumar_valores(provincia, buscar) < numero_min:
+            provincia_min = provincia
+            numero_min = sumar_valores(provincia, buscar)
+    return provincia_min
 
 while True:
     opcion = int(input("""¿Qué gráfica quieres visualizar?
@@ -66,17 +45,57 @@ while True:
     """))
 
     if opcion == 1:
-        etiquetas = ["num_def"]
-        valores = [12]
+        etiquetas = provincias
+        valores = []
+        for provincia in provincias:
+            valor = sumar_valores(provincia, "num_def")
+            valores.append(valor)
+
+        print("La provincia con mayor número de defunciones es: ", provincia_maxima("num_def"))
+        print("La provincia con menor número de defunciones es: ", provincia_min("num_def"))
+
         plt.pie(valores, labels=etiquetas, autopct='%1.1f%%', startangle=90)
         plt.title(f'Número de Defunciones')
         plt.show()
-    elif opcion == 2:
+    elif opcion==2:
+        etiquetas = provincias
+        valores = []
+        for provincia in provincias:
+            valor = sumar_valores(provincia, "new_cases")
+            valores.append(valor)
 
-    elif opcion == 3:
-       
-    elif opcion == 4:
-        
+        print("La provincia con mayor número de casos es: ", provincia_maxima("new_cases"))
+        print("La provincia con menor número de casos es: ", provincia_min("new_cases"))
+
+        plt.pie(valores, labels=etiquetas, autopct='%1.1f%%', startangle=90)
+        plt.title(f'Número de Casos')
+        plt.show()
+    elif opcion==3:
+        etiquetas = provincias
+        valores = []
+        for provincia in provincias:
+            valor = sumar_valores(provincia, "num_hosp")
+            valores.append(valor)
+
+        print("La provincia con mayor número de casos es: ", provincia_maxima("num_hosp"))
+        print("La provincia con menor número de casos es: ", provincia_min("num_hosp"))
+
+        plt.pie(valores, labels=etiquetas, autopct='%1.1f%%', startangle=90)
+        plt.title(f'Número de Hospitalizados')
+        plt.show()
+    elif opcion==4:
+        etiquetas = provincias
+        valores = []
+        for provincia in provincias:
+            valor = sumar_valores(provincia, "num_uci")
+            valores.append(valor)
+
+        print("La provincia con mayor número de casos es: ", provincia_maxima("num_uci"))
+        print("La provincia con menor número de casos es: ", provincia_min("num_uci"))
+
+        plt.pie(valores, labels=etiquetas, autopct='%1.1f%%', startangle=90)
+        plt.title(f'Número de UCI')
+        plt.show()
     elif opcion == 5:
         break
     else:

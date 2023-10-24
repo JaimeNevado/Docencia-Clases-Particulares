@@ -1,8 +1,11 @@
-cadena1 = "manzana|platano|naranjas"
-cadena2 = "manzana,platano,naranjas"
 
-lista1 = cadena1.split("|")
-lista2 = cadena2.split(",")
+lista = [5, 3, "Juan"]
 
-print(lista2)
+lista.append(5)
+lista.append(3)
+lista.append("Juan")
+
+
+
+print(lista_de_luis)
 
