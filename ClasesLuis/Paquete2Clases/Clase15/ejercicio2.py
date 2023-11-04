@@ -9,4 +9,6 @@ cantidades.reverse()
 print("La lista ordenada de mayor a menor es: ")
 print(cantidades)
 
-print("La cantidad media es: ", sum(cantidades)/len(cantidades))
+media = sum(cantidades) / len(cantidades)
+
+print("La cantidad media es: ", media)

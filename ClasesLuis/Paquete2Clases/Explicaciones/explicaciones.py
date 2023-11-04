@@ -1,11 +1,13 @@
+nombres = ["Luis", "Juan", "Jaime", "Paco"]
 
-lista = [5, 3, "Juan"]
+numeros = [1, 2, 3, 5]
 
-lista.append(5)
-lista.append(3)
-lista.append("Juan")
-
+# Opción 1 (print)
 
 
-print(lista_de_luis)
+# Opción 2 (while)
 
+# Opción 3 (for)
+for elemento in numeros:
+    # elemento = "Jaime"
+    print(elemento)
