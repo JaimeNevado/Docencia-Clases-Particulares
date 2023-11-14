@@ -6,22 +6,24 @@ stock_productos = {
     "bufanda": 25
 }
 
-print("Bienvenido al sistema de administración de stock.")
+print("Bienvenido al sistema de administracion de stock")
 
-print("\n1. Mostrar stock de productos")
-print("2. Agregar un nuevo producto")
-opcion = input("Elige una opción: ")
 
-if opcion == "1":
-    print("Stock de productos:")
-    for producto, cantidad in stock_productos.items():
-        print(producto, ": ", str(cantidad))
+numero = 2
+while (numero > 0):
+    print("1.Mostar cantidad en stock")
+    print("2.Agregar nuevo producto")
+    print("3. Salir")
 
-elif opcion == "2":
-    nuevo_producto = input("Introduce el nombre del producto: ")
-    cantidad_nueva = int(input("Introduce la cantidad de " + nuevo_producto + " en stock: "))
-    stock_productos[nuevo_producto] = cantidad_nueva
-    print(nuevo_producto, " ha sido añadido al stock.")
+    respuesta= int(input("Que quieres hacer? "))
 
-else:
-    print("Opción inválida. Inténtalo de nuevo.")
+    if (respuesta==1):
+        print(stock_productos)
+    elif (respuesta==2):
+        producto=input(("Que has traido?"))
+        cantidad=int(input("Que cantidad has traido? "))
+        stock_productos[producto]=cantidad
+    elif (respuesta == 3):
+        break
+    else:
+        print("Error")
