@@ -1,4 +1,6 @@
-datos_usuario = {}
+datos_usuario = {
+
+}
 
 print("Bienvenido, dime tus datos!:")
 
@@ -8,18 +10,17 @@ while True:
     ciudad = input("Ciudad: ")
 
     # Almacenar la información en el diccionario
-    datos_usuario[nombre] = {'Edad': edad, 'Ciudad': ciudad}
+    datos_usuario["Nombre"] = nombre
+    datos_usuario["Edad"] = edad
+    datos_usuario["Ciudad"] = ciudad
 
     # Preguntar al usuario si desea agregar más información
-    continuar = input("¿Desea agregar información para otro usuario? (s/n): ")
+    continuar = int(input("¿Desea agregar otro usuario? (1 = Si / 2 = No): "))
 
     # Salir del bucle si el usuario no desea agregar más información
-    if continuar.lower() != 's':
+    if continuar == 2:
         break
 
 # Imprimir la información recopilada
 print("\nInformación de los usuarios:")
-for nombre, info in datos_usuario.items():
-    print(f"\nNombre: {nombre}")
-    print(f"Edad: {info['Edad']}")
-    print(f"Ciudad: {info['Ciudad']}")
+print(datos_usuario)

@@ -9,8 +9,7 @@ stock_productos = {
 print("Bienvenido al sistema de administracion de stock")
 
 
-numero = 2
-while (numero > 0):
+while (True):
     print("1.Mostar cantidad en stock")
     print("2.Agregar nuevo producto")
     print("3. Salir")

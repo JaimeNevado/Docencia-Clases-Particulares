@@ -1,13 +1,14 @@
-stock_productos = {
-    "camisa": 50,
-    "pantalon": 30,
-    "zapatos": 20,
-    "sombrero": 15,
-    "bufanda": 25
+diccionario = {
+    
 }
-producto = input("Dime el producto: ")
-cantidad = int(input("Cuánto has traido?: "))
 
-stock_productos[producto] = cantidad
+diccionario["nombre"] = input("Dime tu nombre")
+diccionario["edad"] = int(input("Dime tu edad"))
 
-print(stock_productos)
+
+# delete
+cosa_a_eliminar = input("Dime la cosa a eliminar: ")
+
+del diccionario[cosa_a_eliminar.lower()]
+
+print(diccionario)
