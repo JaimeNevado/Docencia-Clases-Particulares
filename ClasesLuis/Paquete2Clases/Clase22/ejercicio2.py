@@ -18,7 +18,7 @@ while True:
         break
 
     # Verificar si el producto existe en el stock
-    if producto_comprar in stock_amazon:
+    if producto_comprar.lower() in stock_amazon:
         # Verificar si la cantidad de ese producto es mayor que 0
         if stock_amazon[producto_comprar] > 0:
             # Quitar un elemento de stock de ese producto

@@ -1,14 +1,9 @@
-diccionario = {
-    
+stock_amazon = {
+    'macbook': 5,
+    'libro': 10,
+    'auriculares': 8,
 }
 
-diccionario["nombre"] = input("Dime tu nombre")
-diccionario["edad"] = int(input("Dime tu edad"))
+stock_amazon['macbook'] = stock_amazon['macbook'] - 1
 
-
-# delete
-cosa_a_eliminar = input("Dime la cosa a eliminar: ")
-
-del diccionario[cosa_a_eliminar.lower()]
-
-print(diccionario)
+# MACBOOK == macbook
