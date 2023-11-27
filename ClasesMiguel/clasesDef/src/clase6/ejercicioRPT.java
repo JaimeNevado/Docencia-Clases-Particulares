@@ -20,6 +20,8 @@ public class ejercicioRPT {
         while (jugador2 != 'T' && jugador2 != 'R' && jugador2 != 'P') {
             System.out.print("Jugador 2, elige T, R o P: ");
             jugador2 = scanner.next().toUpperCase().charAt(0);
+            
+            
         }
 
         // Determinar resultado
