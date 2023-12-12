@@ -1,22 +1,21 @@
 package clase7;
 
 public class expliaciones {
-
-	public static void comprobar(int[] arr) {
-		if (arr == null) {
-			System.out.println("Error");
-		} else if (arr.length == 0){
-			System.out.println("Está vacío");
-		} else {
-			int tamaño = arr.length;
-			System.out.println("Tiene " + tamaño + " elementos");			
+	
+	public static boolean esPar(int num) {
+		boolean numeroPar = false;
+		if (num % 2 == 0) {
+			numeroPar = true;
 		}
-
+		return numeroPar;
 	}
-
+	
 	public static void main(String[] args) {
-		int[] array = null;
-		comprobar(array);
+		if (esPar(15)) {
+			System.out.println("Es par");
+		} else {
+			System.out.println("No es par");
+		}
 	}
 
 }

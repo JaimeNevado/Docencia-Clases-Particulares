@@ -14,7 +14,7 @@ copia = list(csv.DictReader(archivo))
 lineas = copia
 provincias = []
 datos = {}
-listaDatos = []
+listaDatos = [] 
 
 def crear_lista_provincias():
 	# Creamos la lista con las provincias no repetidas
