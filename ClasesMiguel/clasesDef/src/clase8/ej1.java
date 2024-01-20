@@ -1,4 +1,4 @@
-package clase1;
+package clase8;
 
 public class ej1 {
 	

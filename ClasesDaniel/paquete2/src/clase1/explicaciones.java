@@ -1,27 +1,28 @@
 package clase1;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class explicaciones {
+	
+	public static void esPalindroma(List<Integer> l) {
+		if (l.get(0) == l.get(l.size() - 1)) {
+			System.out.println("Lo es");
+		}
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int matriz[][] = {
-				{20, 30, 50},
-				{50, 0, 50},
-				{30, 70, 0}
-		};
+		List<Integer> lista = new ArrayList<>();
 		
-		hola(matriz);
+		lista.add(2);
+		lista.add(3);
+		lista.add(2);
+		lista.add(3);
 		
-		int numero = matriz[2][1];
-		
-		
-		System.out.println(numero);
-		System.out.println(array);
+		esPalindroma(lista);
 	}
 
-	private static void hola(int[][] matriz) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 }

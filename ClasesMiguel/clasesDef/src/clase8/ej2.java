@@ -1,4 +1,4 @@
-package clase1;
+package clase8;
 
 public class ej2 {
 	
@@ -6,7 +6,6 @@ public class ej2 {
         if (tamaño % 2 == 0) {
             throw new IllegalArgumentException("El tamaño debe ser un número impar");
         }
-        throw new IlegalArgumentException
 
         int[][] matriz = new int[tamaño][tamaño];
 
