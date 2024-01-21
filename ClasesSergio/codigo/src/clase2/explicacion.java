@@ -13,7 +13,7 @@ public class explicacion {
 			System.out.println("Error, cadena muy corta");
 		}
 
-        
+   
 	}
 
 }
