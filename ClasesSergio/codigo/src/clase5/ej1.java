@@ -1,28 +1,35 @@
 package clase5;
 
-import java.util.Random;
-
 public class ej1 {
 
-	public static void main(String[] args) {
-		Random rd = new Random();
-		int[] array1 = new int[23];
-		
-		for (int i = 0; i < array1.length; i++) {
-			int numero = rd.nextInt()%4;
-			if (numero < 0) {
-				numero = numero * -1;
+	public static int[][] construirMatrizCruz(int tamaño) {
+
+		int[][] matriz = new int[tamaño][tamaño];
+
+		int mitad = tamaño / 2;
+		for (int i = 0; i < tamaño; i++) {
+			matriz[mitad][i] = 1; // Fila del medio
+			matriz[i][mitad] = 1; // Columna del medio
+		}
+
+		return matriz;
+	}
+
+	public static void imprimirMatriz(int[][] matrizCruz) {
+		for (int i = 0; i < matrizCruz.length; i++) {
+			for (int j = 0; j < matrizCruz[i].length; j++) {
+				System.out.print(matrizCruz[i][j] + " ");
 			}
-			array1[i] = numero;
-			
+			System.out.println();
 		}
-		
-		
-		for (int i = 0; i < array1.length; i++) {
-			System.out.print(array1[i] + " ");
-		}
-		
-		
+	}
+	
+	public static void main(String[] args) {
+		int tamaño = 5;
+
+		int[][] matrizCruz = construirMatrizCruz(tamaño);
+
+		imprimirMatriz(matrizCruz);
 	}
 
 }

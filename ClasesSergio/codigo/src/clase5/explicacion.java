@@ -1,29 +1,39 @@
 package clase5;
 
+import java.util.Scanner;
+
 public class explicacion {
 
+	public static double calcularMedia(int[] notas) {
+		int cantidadDeNotas = notas.length;
+		double suma = 0;
+		
+		for (int nota : notas) {
+			suma += nota;
+		}
+		
+		double media = suma / cantidadDeNotas;
+		
+		System.out.println("La media es: " + media);
+		
+		return media;
+		
+	}
+	
 	public static void main(String[] args) {
-		int[] array1 = {1, 2, 3, 4, 5, 6};
-		int[] array2 = {1, 4, 2, 5, 7, 8};
-		
-		boolean iguales = true;
-		String nombre = "Sergio";
-		int i = 0;
-		
-		while(i < array1.length && iguales == true) {
-			if (array1[i] != array2[i]) {
-				iguales = false;
-			}
-			System.out.println("Estoy en bucle");
-			i++;
-		}
-		
-		if (iguales) {
-			System.out.println("Son iguales");
-		} else {
-			System.out.println("No son iguales");
-		}
 
+		int[] numeros = {4, 5, 6, 8, 10};
+		
+		double resultado = calcularMedia(numeros);
+		
+
+		if (comprobarParidadDeMatriz(matriz)) {
+			System.out.println("Estás aprobado");
+		} else {
+			System.out.println("No estás aprobado");
+		}
+		
+		
 	}
 
 }
