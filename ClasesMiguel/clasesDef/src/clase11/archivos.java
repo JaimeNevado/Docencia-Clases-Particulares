@@ -12,16 +12,19 @@ public class archivos {
 		BufferedReader reader = null;
 		String line = "";
 		
-		int[] array = new int[3];
-		int i = 0;
+		int[][] array = new int[3][3];
 		try {
+			int i = 0;
+			int j = 0;
 			reader = new BufferedReader (new FileReader(ruta));
 			while ((line = reader.readLine()) != null) {
 				String[] row = line.split(",");
+				j = 0;
 				for (String s : row) {
-					array[i] = Integer.parseInt(s);
-					i++;
+					array[i][j] = Integer.parseInt(s);
+					j++;
 				}
+				i++;
 			}
 		} catch (Exception e) {
 			System.out.println("Error");
@@ -33,9 +36,12 @@ public class archivos {
 			}
 		}
 		
-		// Print array
-		for (int elemento : array) {
-			System.out.print(elemento + " ");
+		
+		for (int i = 0; i < array.length; i++) {
+			for (int j = 0; j < array[i].length; j++) {
+				System.out.print(array[i][j] + " ");
+			}
+			System.out.println();
 		}
 		
 	}

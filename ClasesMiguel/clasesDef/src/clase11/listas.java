@@ -39,7 +39,7 @@ public class listas {
 
 	public static void listarMatriz(int[][] a) {
 		for (int i = 0; i < a.length; i++) {
-			for (int j = 0; j < a.length; j++) {
+			for (int j = 0; j < a[i].length; j++) {
 				System.out.print(a[i][j] + " ");
 			}
 			System.out.println();
@@ -135,16 +135,13 @@ public class listas {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		boolean continuar = true;
-		int matriz1[][] = { 
-				{ 2, 8, 5}, 
-				{ 5, 7, 9}, 
-				{ 6, 1, 7} 
-			};
-		int matriz2[][] = { 
-				{ 2, 8, 5}, 
-				{ 5, 7, 9}, 
-				{ 6, 1, 7} 
-			};
+		
+		System.out.println("Dime el tamaño de la matriz: ");
+		int tamaño = sc.nextInt();
+		
+		int matriz1[][] = new int[tamaño][tamaño];
+		int matriz2[][] = new int[tamaño][tamaño];
+		
 		
 		int matrizResultado[][] = new int[matriz1.length][matriz1[0].length];
 
@@ -185,7 +182,7 @@ public class listas {
 				matrizResultado = multiplicarEscalar(matriz1, sc);
 				break;
 			case 9:
-				transponer();
+				//transponer();
 				break;
 			case 10:
 				matrizResultado = multiplicarMatrices(matriz1, matriz2);
