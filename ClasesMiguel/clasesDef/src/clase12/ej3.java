@@ -1,23 +1,26 @@
-package clase11;
+package clase12;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class leerArchivo {
+public class ej3 {
 
 	public static void main(String[] args) {
 
-		String ruta2 = "/Users/jaimenevado/Desktop/Docencia-Clases-Particulares/ClasesMiguel/clasesDef/src/clase11/archivo_salida.csv";
-
-		String ruta = "C://miCarpeta/miArchivo.csv";
+		String ruta = "/Users/jaimenevado/Desktop/Docencia-Clases-Particulares/ClasesMiguel/clasesDef/src/clase12/archivo.csv";
 
 		BufferedWriter writer = null;
+		int array[] = { 2, 4, 7, 2, 9, 1, 5 };
 
 		try {
 			writer = new BufferedWriter(new FileWriter(ruta));
-			writer.write("Hola Mundo");
-			writer.newLine();
+			for (int i = 0; i < array.length; i++) {
+				writer.write(array[i] + ",");
+			}
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -27,6 +30,6 @@ public class leerArchivo {
 				e.printStackTrace();
 			}
 		}
-
 	}
+
 }

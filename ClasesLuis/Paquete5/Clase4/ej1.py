@@ -8,7 +8,10 @@ def sumaMatrices(m1, m2):
 def imprimirMatriz(m):
 	for i in range(len(m)):
 		for j in range(len(m[i])):
-			print(m[i][j], "", end='')
+			if ():
+				print(m[i][j], "", end='')
+			else:
+				print("X", "", end='')
 		print()
 
 
@@ -25,3 +28,4 @@ matriz2 = [
 ]
 
 imprimirMatriz(sumaMatrices(matriz1, matriz2))
+

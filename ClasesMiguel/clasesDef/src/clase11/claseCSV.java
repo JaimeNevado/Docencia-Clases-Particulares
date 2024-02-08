@@ -1,39 +1,43 @@
 package clase11;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 
 public class claseCSV {
 
 	public static void main(String[] args) {
-		String ruta = "/Users/jaimenevado/Desktop/Docencia-Clases-Particulares/ClasesMiguel/clasesDef/src/clase11/maikel.csv";
+		String ruta2 = "/Users/jaimenevado/Desktop/Docencia-Clases-Particulares/ClasesMiguel/clasesDef/src/clase11/maikel.csv";
 		
-		BufferedWriter escritor = null;
+		String ruta = "C://miCarpeta/miArchivo.csv";
+		 
+		BufferedReader reader = null;
+	
 		
-		
-		int edades[] = {19, 14};
-		int edades2[] = {19, 14};
-		
+
 		
 		try {
-			escritor = new BufferedWriter(new FileWriter(ruta));
-			
-			escritor.write("Hola Mundo");
-			
-			System.out.println("Se ha escrito");
+			reader = new BufferedReader (new FileReader(ruta));
+			String linea = "";
+			while ((linea = reader.readLine()) != null) {
+				String[] array = linea.split(",");
+				// Lo que quieras hacer con el array
+			}	
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
+		} finally { 
 			try {
-				escritor.close();
+				reader.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-
+		
+		
+		for (String s : textos) {
+			System.out.println(s);
+		}
+		
 	}
 
 }
