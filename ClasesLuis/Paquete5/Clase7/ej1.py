@@ -7,11 +7,19 @@ def escribirMatriz(matriz):
 
 def es_no_negativa_y_menor_que_100(matriz):
 	estado = True
-	for fila in matriz:
-		for elemento in fila:
-			if elemento < 0 or elemento >= 100:
+	for i in range(len(matriz)):
+		for j in range(len(matriz[i])):
+			if matriz[i][j] < 0 or matriz[i][j] >= 100:
 				estado = False
 	return estado
+
+
+
+
+
+
+
+
 
 def suma_fila_igual_a_100(matriz):
     estado = True
