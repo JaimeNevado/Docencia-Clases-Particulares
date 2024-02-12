@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
 
 # Datos
-x = [1, 2, 3, 4, 5]
-y = [2, 3, 5, 7, 11]
+x = [0, 1, 2, 3, 4]
+y = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes"]
 
 # Crear el diagrama de dispersión
 plt.bar(x, y)
@@ -16,3 +16,4 @@ plt.ylabel('Eje Y')
 
 # Mostrar el gráfico
 plt.show()
+
