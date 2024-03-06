@@ -46,16 +46,25 @@ public class Persona {
 		return "Tengo " + edad + " años, mido " + altura + ", me llamo " + nombre;
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return false;
+		}
+		Persona otra = (Persona) o;
+		if (otra.nombre == this.nombre) {
+			return true;
+		}
+		return false;
+	}
 
 	public static void main(String[] args) {
 		Persona primerHumano = new Persona(21, 1.70, "Roberto");
 		Persona segundoHumano = new Persona(20, 1.70, "Roberto");
 	
 		
-		String nombre = "Jaime";
-		String nombre2 = "Jaime";
 		
-		System.out.println(nombre.equals(nombre2));
+		System.out.println(primerHumano.equals(segundoHumano));
 
 	}
 
