@@ -4,6 +4,7 @@ import os
 archivo = open("APY_KEY", "r")
 escribo = open("code.py", "w")
 OPENAI_API_KEY = archivo.readline()
+
 archivo.close()
 
 client = OpenAI(api_key=OPENAI_API_KEY)
@@ -14,7 +15,7 @@ while (True):
 		break
 
 	completion = client.chat.completions.create(
-	model="gpt-3.5-turbo",
+	model="gpt-4",
 	messages=[
 		{
 			"role": "system", 

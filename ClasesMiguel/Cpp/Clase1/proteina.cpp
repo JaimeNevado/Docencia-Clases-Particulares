@@ -2,16 +2,58 @@
 
 using namespace std;
 
-int sumar(int a, int b)
+class Persona
 {
-	int suma = a + b;
-	return suma;
-}
+private:
+	string nombre;
+	int edad;
+	double altura;
+
+public:
+	Persona(string n, int e, double a)
+	{
+		nombre = n;
+		edad = e;
+		altura = a;
+	}
+	void saludar()
+	{
+		cout << "Hola!!" << endl;
+	}
+
+	// Getters
+	int getEdad()
+	{
+		return edad;
+	}
+
+	string getNombre()
+	{
+		return nombre;
+	}
+
+	double getAltura()
+	{
+		return altura;
+	}
+
+	// Setters
+	void setNombre(string n)
+	{
+		nombre = n;
+	}
+};
 
 int main()
 {
-	int resultado = sumar(12, 3);
+	Persona persona1("Jaime", 20, 1.8);
+	Persona persona2("Manueh", 13, 4);
 
-	cout << "El resultado es: " << resultado << endl;
+	cout << persona2.getNombre() << endl;
+
+	persona2.setNombre("Maikel");
+
+	cout << persona2.getNombre() << endl;
+
 	return 0;
 }

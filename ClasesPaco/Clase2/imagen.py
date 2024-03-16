@@ -8,7 +8,7 @@ client = OpenAI(api_key=clave)
 
 response = client.images.generate(
   model="dall-e-3",
-  prompt="Haz una imagen",
+  prompt="Un elefante con sombrero mexicano paseando por la playa de Málaga",
   size="1024x1024",
   quality="standard",
   n=1,

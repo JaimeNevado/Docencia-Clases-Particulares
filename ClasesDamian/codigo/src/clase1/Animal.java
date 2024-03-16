@@ -5,10 +5,10 @@ public class Animal {
 	private int edad;
 	private int peso;
 	
-	public Animal(String n, int e, int p) {
-		this.nombre = n;
-		this.edad = e;
-		this.peso = p;
+	public Animal(int edad2, String nombre2, double altura) {
+		this.nombre = edad2;
+		this.edad = nombre2;
+		this.peso = altura;
 	}
 
 	public void hacerRuido() {

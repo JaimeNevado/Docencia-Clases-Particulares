@@ -1,0 +1,9 @@
+Pregunta: Dime 3 paises
+Respuesta: España, Francia, Portugal
+---------------------------------------------
+Pregunta: Cuantos coches hay en el mundo
+Respuesta: Es dificil calcularlo pero unos 3 coches
+---------------------------------------------
+Pregunta: ¿McDonalds o BurguerKing?
+Respuesta: Es mejor comida de la abuela ;)
+---------------------------------------------

@@ -1,5 +1,7 @@
 package clase3;
 
+package clase3;
+
 import java.util.Random;
 import java.util.Scanner;
 
