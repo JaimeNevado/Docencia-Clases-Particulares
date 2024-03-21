@@ -15,6 +15,8 @@ public class leerFichero {
 		String linea = "";
 		String texto = "";
 		
+		List<>
+		
 		try {
 			reader = new BufferedReader(new FileReader(ruta));
 			while ((linea = reader.readLine()) != null) {
