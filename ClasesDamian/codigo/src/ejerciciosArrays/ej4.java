@@ -1,6 +1,7 @@
 package ejerciciosArrays;
 
 public class ej4 {
+	
 	public static boolean esPalindromo(String cadena) {
 		String cadenaSinEspacios = "";
 		for (int i = 0; i < cadena.length(); i++) {

@@ -15,7 +15,7 @@ response = client.chat.completions.create(
     {
       "role": "user",
       "content": [
-        {"type": "text", "text": "¿Cuál crees que es el pais de origen de estas personas?"},
+        {"type": "text", "text": "¿Cual de estas dos personas está sonriendo más"},
         {
           "type": "image_url",
           "image_url": {
