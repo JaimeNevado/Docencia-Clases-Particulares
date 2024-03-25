@@ -8,3 +8,8 @@ texto
 texto/clave.txt
 texto/requisitos.txt
 enunciado.txt
+.DS_Store
+*.mp3
+**/*.mp3
+*.txt
+**/*.txt
