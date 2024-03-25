@@ -1,3 +1,10 @@
 **/APY_KEY
 **/.DS_Store
 **/a.out
+main.py
+*.sh
+texto/
+texto
+texto/clave.txt
+texto/requisitos.txt
+enunciado.txt
