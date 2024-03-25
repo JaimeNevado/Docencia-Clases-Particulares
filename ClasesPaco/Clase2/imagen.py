@@ -4,11 +4,11 @@ import webbrowser
 clave = open("APY_KEY", "r").readline()
 client = OpenAI(api_key=clave)
 
-
+xd = input("Dime lo que quieres generar: ")
 
 response = client.images.generate(
   model="dall-e-3",
-  prompt="Un elefante con sombrero mexicano paseando por la playa de Málaga",
+  prompt=xd,
   size="1024x1024",
   quality="standard",
   n=1,

@@ -8,36 +8,40 @@ import java.io.IOException;
 public class leerFichero {
 
 	public static void main(String[] args) {
-		String ruta = "/Users/jaimenevado/Desktop/Docencia-Clases-Particulares/ClasesDamian/codigo/src/FiCHEROSYEXCP/texto.txt";
+		String ruta = "C:/miCarpeta/texto.txt";
 		
 		BufferedReader reader = null;
-		
 		String linea = "";
-		String texto = "";
+		int tamaño = 3;
 		
-		List<>
+		String [] nombres = new String[tamaño];
 		
 		try {
 			reader = new BufferedReader(new FileReader(ruta));
 			while ((linea = reader.readLine()) != null) {
-				texto = texto + linea + "\n";
+				nombres = linea.split(",");
 			}
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Illo no existe ese archivo");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("IOException ha ocurrido");
+		} catch (Exception e) {
+			System.out.println("Excepcion general");
 		}
 		
-		try {
-			reader.close();
-		} catch (IOException e) {
-			e.printStackTrace();
+		finally {
+			try {
+				reader.close();
+			} catch (IOException e) {
+				System.out.println("No se ha podido cerrar el archivo");
+			}
 		}
 		
-		System.out.println(texto);
-
+		System.out.println(nombres[0]);
+		System.out.println(nombres[1]);
+		System.out.println(nombres[2]);
+		
+		
 	}
 
 }

@@ -1,12 +1,15 @@
 from openai import OpenAI
+import webbrowser as w
 
-archivo = open("APY_KEY", "r")
 
-clave = archivo.readline()
+
+clave = open("APY_KEY", "r").readline()
 
 cliente = OpenAI(api_key=clave)
 
-texto = input("Dime el prompt: ")
+texto = input("Dime que imagen quieres generar: ")
+
+print("Estoy pensando...")
 
 respuesta = cliente.images.generate(
 	model="dall-e-3",
@@ -20,3 +23,4 @@ enlaceWeb = respuesta.data[0].url
 
 print(enlaceWeb)
 
+w.open(enlaceWeb)
