@@ -1,11 +1,14 @@
-from pytube import YouTube
-import os
+def sumar(a, b):
+	print(a + b)
 
-def descargarMP3(enlace, nombreArchivo):
-	yt = YouTube(enlace)
+def restar(a, b):
+	print(a - b)
 
-	audio = yt.streams.filter(only_audio=True).first()
+def multiplicar(a, b):
+	print(a * b)
 
-	ruta_archivo = audio.download(output_path="/Users/jaimenevado/Desktop/Docencia-Clases-Particulares/ClasesLuis/Paquete7/Clase2", filename=nombreArchivo)
-
-	print("Se ha guardado el archivo correctamente ✓")
+def dividir(a, b):
+	if (b == 0):
+		print("No se puede dividir entre 0")
+	else:
+		print(a / b)

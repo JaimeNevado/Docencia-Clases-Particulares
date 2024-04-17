@@ -1,16 +1,13 @@
 def crearLista(lista_original):
-    # Crear listas vacías
     numeros_pares = []
     numeros_impares = []
 
-    # Iterar sobre la lista original y clasificar los números
-    for num in lista_original:
-        if num % 2 == 0:
-            numeros_pares.append(num)
+    for elemento in lista_original:
+        if elemento % 2 == 0:
+            numeros_pares.append(elemento)
         else:
-            numeros_impares.append(num)
+            numeros_impares.append(elemento)
 
-    # Imprimir las listas
     print("Números pares:", numeros_pares)
     print("Números impares:", numeros_impares)
 
