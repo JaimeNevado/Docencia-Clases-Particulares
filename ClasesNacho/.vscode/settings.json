@@ -1,0 +1,6 @@
+{
+	"accessibility.accessibleView.closeOnKeyPress": false,
+	"inlineChat.accessibleDiffView": "off",
+	"terminal.integrated.accessibleViewFocusOnCommandExecution": false,
+	"comments.visible": false
+}
