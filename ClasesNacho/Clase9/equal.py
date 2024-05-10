@@ -20,9 +20,7 @@ if torre1 == torre2:
 else:
     print("Las torres tienen alturas diferentes.")
 
-# Destruir una torre
 torre1.destruirTorre()
 
-# Mostrar información de las torres
 print(torre1)
 print(torre2)

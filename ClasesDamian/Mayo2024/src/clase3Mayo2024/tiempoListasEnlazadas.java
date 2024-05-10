@@ -13,10 +13,11 @@ public class tiempoListasEnlazadas {
         for (int i = 0; i < 100000; i++) {
             listaEnlazada.add(i);
         }
-        long startTime = System.nanoTime();
+        
+        long startTime = System.nanoTime(); // 19:00
         Integer elementoEnlazada = listaEnlazada.get(50000);
-        long endTime = System.nanoTime();
-        long tiempoEnlazada = endTime - startTime;
+        long endTime = System.nanoTime(); // 19:01
+        long tiempoEnlazada = endTime - startTime; // 00:01
         System.out.println("Tiempo de acceso en lista enlazada: " + tiempoEnlazada + " nanosegundos");
 
         

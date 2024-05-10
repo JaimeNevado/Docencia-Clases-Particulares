@@ -5,6 +5,18 @@ class Torre:
 
     def __eq__(self, otra_torre):
         return self.altura == otra_torre.altura
+    
+    def __gt__(self, otra_torre):
+        return self.altura > otra_torre.altura
+    
+    def __ge__(self, otra_torre):
+        return self.altura >= otra_torre.altura
+    
+    def __lt__(self, otra_torre):
+        return self.altura < otra_torre.altura
+    
+    def __le__(self, otra_torre):
+        return self.altura <= otra_torre.altura
 
     def __str__(self):
         return f"Torre '{self.nombre}' - Altura: {self.altura} metros"
@@ -15,10 +27,10 @@ class Torre:
 torre1 = Torre("Torre A", 100)
 torre2 = Torre("Torre B", 100)
 
-if torre1 == torre2:
-    print("Las torres tienen la misma altura.")
+if torre1 >= torre2:
+    print("La torre 1 es mayor que la torre 2")
 else:
-    print("Las torres tienen alturas diferentes.")
+    print("La torre 1 es menor que la torre 2")
 
 # Destruir una torre
 torre1.destruirTorre()
