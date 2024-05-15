@@ -1,37 +1,20 @@
 class Animal:
-	def __init__(self, p, n, a):
-		self.peso = p
-		self.nombre = n
-		self.altura = a
-		self.estaVivo = True
-
-	def comer(self):
-		print("Estoy comiendo")
-
-	def beber(self):
-		print("Estoy bebiendo")
+	def __init__(self, edad, nombre, altura):
+		self.edad = edad
+		self.nombre = nombre
+		self.altura = altura
 
 	def hacerRuido(self):
-		print("Sonido!!")
+		print("Sonido Genérico de animal!!")
 
-	def __str__(self):
-		return f"Soy: {self.nombre} y mido {self.altura} cm"
-
-
-class Pez(Animal):
-	def __init__(self, p, n, a, numAletas):
-		super().__init__(p, n, a)
-		self.numAletas = numAletas
-
-	def nadar(self):
-		print("Estoy nadando")
+class Perro(Animal):
+	def __init__(self, edad, nombre, altura, color):
+		super().__init__(edad, nombre, altura)
+		self.colorPelo = color
 
 	def hacerRuido(self):
-		print("Glu Glu Glu!!")
+		print("Guau Guau Guau!!")
 
-	def __str__(self):
-		return super().__str__() + f"y tengo {self.numAletas} aletas"
-
-nemo = Pez(0.5, "Nemo", 0.2, 20)
+nemo = Perro(0.5, "Nemo", 0.2, 20)
 
 print(nemo)
