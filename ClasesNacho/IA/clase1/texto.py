@@ -4,7 +4,6 @@ clave = open("APY_KEY", "r").readline()
 
 archivo = open("/Users/jaimenevado/Desktop/Docencia-Clases-Particulares/ClasesNacho/IA/clase1/salida.py", "w")
 
-#coche1 = Coche("Tesla", 15)
 cliente = OpenAI(api_key=clave)
 
 precondiciones = "Escribe solo código en python y no añadas el ```python``` en ningún momento"
@@ -25,9 +24,5 @@ peticion = cliente.chat.completions.create(
 )
 
 textoGenerado = peticion.choices[0].message.content
-
-archivo.write(textoGenerado)
-
-archivo.close()
 
 print(textoGenerado)
