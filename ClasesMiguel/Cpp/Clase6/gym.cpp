@@ -37,7 +37,6 @@ void agregarPersona(std::vector<Persona> &personas)
 	std::cin >> peso;
 	std::cout << "Ingrese el peso en banca: ";
 	std::cin >> pesoEnBanca;
-
 	personas.push_back(Persona(nombre, edad, peso, pesoEnBanca));
 }
 
@@ -54,12 +53,21 @@ void eliminarPersona(std::vector<Persona> &personas)
 	}
 }
 
+void eliminarPersonas(std::vector<Persona> &personas)
+{
+	if (!personas.empty())
+	{
+		while (personas.size() != 0)
+		{
+			personas.pop_back();
+		}
+	}
+}
+
 bool gimnasioLleno(const std::vector<Persona> &personas, int capacidadMaxima)
 {
 	return personas.size() >= capacidadMaxima;
 }
-
-
 
 void mostrarPersonas(const std::vector<Persona> &personas)
 {
@@ -91,7 +99,9 @@ int main()
 	mostrarPersonas(personas);
 
 	// Eliminar una persona del gimnasio
-	eliminarPersona(personas);
+	eliminarPersonas(personas);
+
+	mostrarPersonas(personas);
 
 	// Verificar si el gimnasio está lleno
 	if (gimnasioLleno(personas, capacidadMaxima))
