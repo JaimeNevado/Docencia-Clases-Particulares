@@ -105,6 +105,47 @@ public:
 		}
 		std::cout << std::endl;
 	}
+
+	// Función para insertar un nodo en orden
+	void insertarEnOrden(int dato)
+	{
+		Nodo *nuevoNodo = new Nodo; // Crear un nuevo nodo
+		nuevoNodo->dato = dato;
+		nuevoNodo->siguiente = nullptr;
+
+		if (cabeza == nullptr || cabeza->dato >= dato)
+		{
+			// Insertar al comienzo si la lista está vacía o si el dato es menor o igual al primer nodo
+			if (cabeza != nullptr && cabeza->dato == dato)
+			{
+				delete nuevoNodo; // El dato ya está presente, no se inserta
+				return;
+			}
+			nuevoNodo->siguiente = cabeza;
+			cabeza = nuevoNodo;
+		}
+		else
+		{
+			Nodo *actual = cabeza;
+			while (actual->siguiente != nullptr && actual->siguiente->dato < dato)
+			{
+				actual = actual->siguiente; // Avanzar al siguiente nodo mientras sea menor que el dato
+			}
+			if (actual->siguiente != nullptr && actual->siguiente->dato == dato)
+			{
+				delete nuevoNodo; // El dato ya está presente, no se inserta
+				return;
+			}
+			nuevoNodo->siguiente = actual->siguiente;
+			actual->siguiente = nuevoNodo;
+		}
+	}
+
+	int getTamaño()
+	{
+		int tamaño = 10;
+		return tamaño;
+	}
 };
 
 // Función principal
@@ -112,26 +153,27 @@ int main()
 {
 	ListaEnlazada lista;
 
-	// Insertar nodos al comienzo de la lista
-	lista.insertarAlComienzo(10);
-	lista.insertarAlComienzo(20);
-	lista.insertarAlComienzo(30);
+	// Insertar nodos para crear una lista ordenada
+	lista.insertarEnOrden(1);
+	lista.insertarEnOrden(4);
+	lista.insertarEnOrden(6);
+	lista.insertarEnOrden(7);
+	lista.insertarEnOrden(8);
 
-	// Insertar nodos al final de la lista
-	lista.insertarAlFinal(40);
-	lista.insertarAlFinal(50);
-
-	// Mostrar la lista
-	std::cout << "Lista: ";
+	// Mostrar la lista inicial
+	std::cout << "Lista inicial: ";
 	lista.mostrar();
 
-	// Eliminar un nodo de la lista
-	lista.eliminarNodo(20);
-	std::cout << "Después de eliminar 20:\n";
+	// Insertar un nodo en orden
+	lista.insertarEnOrden(5);
 
-	// Mostrar la lista nuevamente
-	std::cout << "Lista: ";
+	// Mostrar la lista después de insertar
+	std::cout << "Lista después de insertar 5: ";
 	lista.mostrar();
+
+	int variable = lista.getTamaño();
+
+	std::cout << "El tamaño es: " << variable << std::endl;
 
 	return 0;
 }

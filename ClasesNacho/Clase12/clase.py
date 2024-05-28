@@ -14,6 +14,7 @@ matriz2 = [
 	[3, 42, 5]
 ]
 
-mat = lib.Matriz(matriz1)
-
-mat.escribirMatriz()
+def funcion(matriz1):
+	for i in range(0, len(matriz1)):
+		if (sum(matriz1[i]) != 100):
+			return False

@@ -2,8 +2,6 @@ from openai import OpenAI
 
 clave = open("APY_KEY", "r").readline()
 
-archivo = open("/Users/jaimenevado/Desktop/Docencia-Clases-Particulares/ClasesNacho/IA/clase1/salida.py", "w")
-
 cliente = OpenAI(api_key=clave)
 
 precondiciones = "Escribe solo código en python y no añadas el ```python``` en ningún momento"

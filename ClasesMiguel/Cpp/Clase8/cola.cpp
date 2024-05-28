@@ -29,12 +29,12 @@ public:
 	{
 		while (!isEmpty())
 		{
-			desencolar();
+			eliminarElemento();
 		}
 	}
 
-	// Función para encolar (añadir un elemento al final de la cola)
-	void encolar(int dato)
+	// Función para anadirElemento (añadir un elemento al final de la cola)
+	void anadirElemento(int dato)
 	{
 		Nodo *nuevoNodo = new Nodo;		// Crear un nuevo nodo
 		nuevoNodo->dato = dato;			// Asignar el dato al nodo
@@ -53,12 +53,12 @@ public:
 		tamano++;		   // Incrementar el tamaño de la cola
 	}
 
-	// Función para desencolar (eliminar un elemento del inicio de la cola)
-	void desencolar()
+	// Función para eliminarElemento (eliminar un elemento del inicio de la cola)
+	void eliminarElemento()
 	{
 		if (isEmpty())
 		{
-			std::cout << "La cola está vacía, no se puede desencolar.\n";
+			std::cout << "La cola está vacía, no se puede eliminarElemento.\n";
 			return;
 		}
 
@@ -105,24 +105,24 @@ int main()
 	Cola cola;
 
 	// Encolar elementos en la cola
-	cola.encolar(10);
-	cola.encolar(20);
-	cola.encolar(30);
+	cola.anadirElemento(10);
+	cola.anadirElemento(20);
+	cola.anadirElemento(30);
 
 	// Obtener y mostrar el elemento del frente sin eliminarlo
 	std::cout << "Frente de la cola: " << cola.front() << std::endl;
 
-	// Desencolar un elemento
-	cola.desencolar();
-	std::cout << "Después de desencolar, frente de la cola: " << cola.front() << std::endl;
+	// eliminarElemento un elemento
+	cola.eliminarElemento();
+	std::cout << "Después de eliminarElemento, frente de la cola: " << cola.front() << std::endl;
 
 	// Mostrar el tamaño de la cola
 	std::cout << "Tamaño de la cola: " << cola.size() << std::endl;
 
-	// Desencolar todos los elementos restantes
-	cola.desencolar();
-	cola.desencolar();
-	std::cout << "Después de desencolar todos los elementos, ¿la cola está vacía? " << (cola.isEmpty() ? "Sí" : "No") << std::endl;
+	// eliminarElemento todos los elementos restantes
+	cola.eliminarElemento();
+	cola.eliminarElemento();
+	std::cout << "Después de eliminarElemento todos los elementos, ¿la cola está vacía? " << (cola.isEmpty() ? "Sí" : "No") << std::endl;
 
 	return 0;
 }
