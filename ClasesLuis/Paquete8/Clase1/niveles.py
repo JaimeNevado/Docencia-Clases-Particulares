@@ -31,7 +31,7 @@ coordenadaY = altoPantalla / 2
 coordenadaXNegro = random.randint(0, anchoPantalla - tamCuadrado)
 coordenadaYNegro = random.randint(0, altoPantalla - tamCuadrado)
 
-frente = pygame.image.load("RecursosImagenes/frente.png")
+frente = pygame.image.load("RecursosImagenes/camisa.png")
 espaldas = pygame.image.load("RecursosImagenes/espaldas.png")
 izquierda = pygame.image.load("RecursosImagenes/izquierda.png")
 derecha = pygame.image.load("RecursosImagenes/derecha.png")

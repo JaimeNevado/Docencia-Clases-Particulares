@@ -11,6 +11,8 @@ puntuacion = 0
 anchoPantalla = 1024
 altoPantalla = 631
 
+nivel = 0
+
 pantalla = pygame.display.set_mode((anchoPantalla, altoPantalla))
 
 pygame.display.set_caption("EL GRAN JUEGO DE LUIS")
@@ -40,6 +42,23 @@ moneda = pygame.image.load("RecursosImagenes/moneda.png")
 moneda = pygame.transform.scale(moneda, (40, 40))
 
 fondo = pygame.image.load("RecursosImagenes/fondo.jpeg")
+fondo2 = pygame.image.load("RecursosImagenes/nuevo_fondo.jpeg")
+
+
+# Cargamos la fuente
+ruta_fuente = "/Users/jaimenevado/Desktop/Docencia-Clases-Particulares/ClasesLuis/Paquete8/Clase1/RecursosImagenes/DELICIOZO.ttf"
+tamaño_fuente = 38
+font = pygame.font.Font(ruta_fuente, tamaño_fuente)
+
+
+# Definir zona cambio de nivel
+zona_cambio_nivel = pygame.Rect(0, 0, 50, 100)
+
+# Definir la superficie
+superficie = pygame.Surface((50, 100))
+superficie.set_alpha(150) #Transparencia
+superficie.fill(negro)
+
 
 velocidad = 5
 
@@ -67,7 +86,13 @@ while running:
     else:
         direccion = frente
 
-    pantalla.blit(fondo, (0, 0))
+    # PRIMER FONDO
+    if nivel == 0:
+        pantalla.blit(fondo, (0, 0))
+        pantalla.blit(superficie, (0, 0))
+    else:
+        pantalla.blit(fondo2, (0, 0))
+
 
     pantalla.blit(direccion, (coordenadaX, coordenadaY))
     pantalla.blit(moneda, (coordenadaXNegro, coordenadaYNegro))
@@ -94,6 +119,17 @@ while running:
         pygame.time.delay(800)
     else:
         print("No problem")
+
+    if rect_personaje.colliderect(zona_cambio_nivel) and nivel == 0:
+        nivel = nivel + 1
+        mensaje = font.render("!Siguiente Nivel!", True, negro)
+        pantalla.blit(mensaje, (anchoPantalla/2, altoPantalla/2))
+        pygame.display.update()
+        pygame.time.delay(1000)
+        coordenadaX = anchoPantalla / 2
+        coordenadaY = anchoPantalla / 2
+
+
 
     pygame.display.update()
 
