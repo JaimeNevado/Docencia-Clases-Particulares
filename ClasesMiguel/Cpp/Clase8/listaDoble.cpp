@@ -6,6 +6,8 @@ struct Nodo
 	int dato;		 // Dato que contiene el nodo
 	Nodo *anterior;	 // Puntero al nodo anterior
 	Nodo *siguiente; // Puntero al siguiente nodo
+
+	Nodo(int valor) : dato(valor), anterior(nullptr), siguiente(nullptr) {}
 };
 
 // Clase para la lista doblemente enlazada
@@ -17,11 +19,7 @@ private:
 
 public:
 	// Constructor para inicializar la lista vacía
-	ListaDoblementeEnlazada()
-	{
-		cabeza = nullptr;
-		cola = nullptr;
-	}
+	ListaDoblementeEnlazada() : cabeza(nullptr), cola(nullptr) {}
 
 	// Destructor para liberar la memoria de los nodos
 	~ListaDoblementeEnlazada()
@@ -39,10 +37,8 @@ public:
 	// Función para insertar un nodo al comienzo de la lista
 	void insertarAlComienzo(int dato)
 	{
-		Nodo *nuevoNodo = new Nodo;	   // Crear un nuevo nodo
-		nuevoNodo->dato = dato;		   // Asignar el dato al nodo
-		nuevoNodo->anterior = nullptr; // El nuevo nodo no tiene nodo anterior
-		nuevoNodo->siguiente = cabeza; // El siguiente nodo del nuevo nodo es el actual cabeza
+		Nodo *nuevoNodo = new Nodo(dato); // Crear un nuevo nodo
+		nuevoNodo->siguiente = cabeza;	  // El siguiente nodo del nuevo nodo es el actual cabeza
 
 		if (cabeza != nullptr)
 		{
@@ -59,14 +55,12 @@ public:
 	// Función para insertar un nodo al final de la lista
 	void insertarAlFinal(int dato)
 	{
-		Nodo *nuevoNodo = new Nodo;		// Crear un nuevo nodo
-		nuevoNodo->dato = dato;			// Asignar el dato al nodo
-		nuevoNodo->siguiente = nullptr; // El nuevo nodo no tiene siguiente nodo
-		nuevoNodo->anterior = cola;		// El nodo anterior del nuevo nodo es el actual cola
+		Nodo *nuevoNodo = new Nodo(dato); // Crear un nuevo nodo
 
 		if (cola != nullptr)
 		{
 			cola->siguiente = nuevoNodo; // El nodo actual cola apunta al nuevo nodo como siguiente
+			nuevoNodo->anterior = cola;	 // El nodo anterior del nuevo nodo es el actual cola
 		}
 		else
 		{
@@ -76,45 +70,8 @@ public:
 		cola = nuevoNodo; // Actualizar cola para que apunte al nuevo nodo
 	}
 
-	// Función para eliminar un nodo de la lista
-	void eliminarNodo(int dato)
-	{
-		Nodo *actual = cabeza;
-
-		while (actual != nullptr && actual->dato != dato)
-		{
-			actual = actual->siguiente; // Buscar el nodo con el dato especificado
-		}
-
-		if (actual == nullptr)
-		{
-			std::cout << "Nodo con el dato " << dato << " no encontrado.\n";
-			return; // Si no se encuentra el nodo, salir de la función
-		}
-
-		if (actual->anterior != nullptr)
-		{
-			actual->anterior->siguiente = actual->siguiente; // Actualizar el siguiente del nodo anterior
-		}
-		else
-		{
-			cabeza = actual->siguiente; // Si se elimina el primer nodo, actualizar cabeza
-		}
-
-		if (actual->siguiente != nullptr)
-		{
-			actual->siguiente->anterior = actual->anterior; // Actualizar el anterior del siguiente nodo
-		}
-		else
-		{
-			cola = actual->anterior; // Si se elimina el último nodo, actualizar cola
-		}
-
-		delete actual; // Liberar la memoria del nodo eliminado
-	}
-
 	// Función para mostrar los elementos de la lista en orden directo
-	void mostrarAdelante()
+	void mostrarAdelante() const
 	{
 		Nodo *actual = cabeza;
 		while (actual != nullptr)
@@ -126,7 +83,7 @@ public:
 	}
 
 	// Función para mostrar los elementos de la lista en orden inverso
-	void mostrarAtras()
+	void mostrarAtras() const
 	{
 		Nodo *actual = cola;
 		while (actual != nullptr)
@@ -136,41 +93,77 @@ public:
 		}
 		std::cout << std::endl;
 	}
+
+	// Función para obtener el tamaño de la lista
+	int tamaño() const
+	{
+		int tamaño = 0;
+		Nodo *actual = cabeza;
+		while (actual != nullptr)
+		{
+			tamaño++;
+			actual = actual->siguiente;
+		}
+		return tamaño;
+	}
+
+	// Función para obtener la cabeza de la lista
+	Nodo *getCabeza() const
+	{
+		return cabeza;
+	}
 };
+
+// Función para sumar dos listas doblemente enlazadas
+ListaDoblementeEnlazada sumarListas(const ListaDoblementeEnlazada &a, const ListaDoblementeEnlazada &b)
+{
+	ListaDoblementeEnlazada resultado;
+
+	if (a.tamaño() == b.tamaño())
+	{
+		Nodo *actualA = a.getCabeza();
+		Nodo *actualB = b.getCabeza();
+
+		while (actualA != nullptr && actualB != nullptr)
+		{
+			resultado.insertarAlFinal(actualA->dato + actualB->dato);
+			actualA = actualA->siguiente;
+			actualB = actualB->siguiente;
+		}
+	}
+	else
+	{
+		std::cerr << "Error: Las listas tienen tamaños diferentes." << std::endl;
+	}
+
+	return resultado;
+}
 
 // Función principal
 int main()
 {
-	ListaDoblementeEnlazada lista;
+	ListaDoblementeEnlazada lista1;
+	ListaDoblementeEnlazada lista2;
 
 	// Insertar nodos al comienzo de la lista
-	lista.insertarAlComienzo(10);
-	lista.insertarAlComienzo(20);
-	lista.insertarAlComienzo(30);
+	lista1.insertarAlComienzo(10);
+	lista1.insertarAlComienzo(20);
+	lista1.insertarAlComienzo(30);
 
-	// Insertar nodos al final de la lista
-	lista.insertarAlFinal(40);
-	lista.insertarAlFinal(50);
+	// Insertar nodos al comienzo de la lista
+	lista2.insertarAlComienzo(10);
+	lista2.insertarAlComienzo(20);
+	lista2.insertarAlComienzo(30);
 
-	// Mostrar la lista en orden directo
-	std::cout << "Lista en orden directo: ";
-	lista.mostrarAdelante();
+	std::cout << "Lista 1: ";
+	lista1.mostrarAdelante();
+	std::cout << "Lista 2: ";
+	lista2.mostrarAdelante();
 
-	// Mostrar la lista en orden inverso
-	std::cout << "Lista en orden inverso: ";
-	lista.mostrarAtras();
+	ListaDoblementeEnlazada sol = sumarListas(lista1, lista2);
 
-	// Eliminar un nodo de la lista
-	lista.eliminarNodo(20);
-	std::cout << "Después de eliminar 20:\n";
-
-	// Mostrar la lista nuevamente en orden directo
-	std::cout << "Lista en orden directo: ";
-	lista.mostrarAdelante();
-
-	// Mostrar la lista nuevamente en orden inverso
-	std::cout << "Lista en orden inverso: ";
-	lista.mostrarAtras();
+	std::cout << "Lista resultado: ";
+	sol.mostrarAdelante();
 
 	return 0;
 }

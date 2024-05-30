@@ -1,3 +1,6 @@
+#ifndef LISTASENLAZADAS_HPP
+#define LISTASENLAZADAS_HPP
+
 #include <iostream>
 
 // Definición de la estructura del nodo de la lista enlazada
@@ -12,13 +15,14 @@ class ListaEnlazada
 {
 private:
 	Nodo *cabeza; // Puntero al primer nodo de la lista
-	int tamaño = 0;
+	int tamaño;
 
 public:
 	// Constructor para inicializar la lista vacía
 	ListaEnlazada()
 	{
 		cabeza = nullptr;
+		tamaño = 0;
 	}
 
 	// Destructor para liberar la memoria de los nodos
@@ -152,32 +156,4 @@ public:
 	}
 };
 
-// Función principal
-int main()
-{
-	ListaEnlazada lista;
-
-	// Insertar nodos para crear una lista ordenada
-	lista.insertarEnOrden(1);
-	lista.insertarEnOrden(4);
-	lista.insertarEnOrden(6);
-	lista.insertarEnOrden(7);
-	lista.insertarEnOrden(8);
-
-	// Mostrar la lista inicial
-	std::cout << "Lista inicial: ";
-	lista.mostrar();
-
-	// Insertar un nodo en orden
-	lista.insertarEnOrden(5);
-
-	// Mostrar la lista después de insertar
-	std::cout << "Lista después de insertar 5: ";
-	lista.mostrar();
-
-	int variable = lista.getTamaño();
-
-	std::cout << "El tamaño es: " << variable << std::endl;
-
-	return 0;
-}
+#endif

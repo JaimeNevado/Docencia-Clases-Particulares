@@ -1,5 +1,17 @@
 #include <iostream>
 
+class ListaEnlazada
+{
+private:
+	Nodo *cabeza; // Puntero al primer nodo de la lista
+
+public:
+	// Constructor para inicializar la lista vacía
+	ListaEnlazada()
+	{
+		cabeza = nullptr;
+	}
+
 int main()
 {
 	// Asignamos memoria para un entero en el montón (heap)

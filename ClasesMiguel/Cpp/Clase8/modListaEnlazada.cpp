@@ -5,6 +5,7 @@ struct Nodo
 {
 	int dato;		 // Dato que contiene el nodo
 	Nodo *siguiente; // Puntero al siguiente nodo
+	Nodo *anterior;	 // Puntero al nodo anterior
 };
 
 // Clase para la lista enlazada
@@ -12,13 +13,16 @@ class ListaEnlazada
 {
 private:
 	Nodo *cabeza; // Puntero al primer nodo de la lista
-	int tamaño = 0;
+	Nodo *cola;	  // Puntero al último nodo de la lista
+	int tamaño;
 
 public:
 	// Constructor para inicializar la lista vacía
 	ListaEnlazada()
 	{
 		cabeza = nullptr;
+		cola = nullptr;
+		tamaño = 0;
 	}
 
 	// Destructor para liberar la memoria de los nodos
@@ -39,7 +43,20 @@ public:
 		Nodo *nuevoNodo = new Nodo;	   // Crear un nuevo nodo
 		nuevoNodo->dato = dato;		   // Asignar el dato al nodo
 		nuevoNodo->siguiente = cabeza; // El siguiente nodo del nuevo nodo es el actual cabeza
-		cabeza = nuevoNodo;			   // Actualizar cabeza para que apunte al nuevo nodo
+		nuevoNodo->anterior = nullptr; // El nuevo nodo no tiene nodo anterior
+
+		// Si la lista existe
+		if (cabeza != nullptr)
+		{
+			cabeza->anterior = nuevoNodo;
+			cabeza = nuevoNodo;
+		}
+		else
+		{
+			cabeza = nuevoNodo;
+			cola = nuevoNodo;
+		}
+
 		tamaño++;
 	}
 
@@ -99,13 +116,24 @@ public:
 	}
 
 	// Función para mostrar los elementos de la lista
-	void mostrar()
+	void mostrarNormal()
 	{
 		Nodo *actual = cabeza;
 		while (actual != nullptr)
 		{
 			std::cout << actual->dato << " ";
 			actual = actual->siguiente;
+		}
+		std::cout << std::endl;
+	}
+
+	void mostrarInverso()
+	{
+		Nodo *actual = cola;
+		while (actual != nullptr)
+		{
+			std::cout << actual->dato << " ";
+			actual = actual->anterior;
 		}
 		std::cout << std::endl;
 	}
@@ -152,6 +180,9 @@ public:
 	}
 };
 
+
+
+
 // Función principal
 int main()
 {
@@ -166,14 +197,12 @@ int main()
 
 	// Mostrar la lista inicial
 	std::cout << "Lista inicial: ";
-	lista.mostrar();
 
 	// Insertar un nodo en orden
 	lista.insertarEnOrden(5);
 
 	// Mostrar la lista después de insertar
 	std::cout << "Lista después de insertar 5: ";
-	lista.mostrar();
 
 	int variable = lista.getTamaño();
 
