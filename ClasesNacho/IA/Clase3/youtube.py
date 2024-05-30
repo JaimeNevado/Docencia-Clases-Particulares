@@ -3,7 +3,7 @@ from pytube import YouTube
 def descargarMP3(enlace, nombreArchivo):
 	yt = YouTube(enlace)
 
-	audio = yt.streams.filter(only_audio=False).first()
+	audio = yt.streams.filter(only_audio=True).first()
 
 	# Obtener el stream de video con la mejor calidad disponible
 	#video = yt.streams.get_highest_resolution()
@@ -16,4 +16,4 @@ def descargarMP3(enlace, nombreArchivo):
 
 link = input("Dime el enlace del video que quieres descargar: ")
 nombre = input("Con que nombre quieres guardar el archivo: ")
-descargarMP3(link, nombre + ".mp4")
+descargarMP3(link, nombre + ".mp3")
