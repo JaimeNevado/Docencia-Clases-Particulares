@@ -64,6 +64,12 @@ transparente.fill(negro)  # Llenar la superficie con color negro
 running = True
 nivel = 1
 
+# Lista de paredes (rectángulos)
+walls = [
+    pygame.Rect(200, 150, 50, 300), # Ejemplo de una pared
+    pygame.Rect(400, 300, 200, 50)  # Otra pared
+]
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
