@@ -2,13 +2,12 @@ import pygame
 import sys
 import time
 import random
+from libreriaJuego import *
 
 # Inicialización
 pygame.init()
 
 # Configuraciones iniciales
-anchoPantalla = 2400
-altoPantalla = 1500
 screen_width = 1200  # Tamaño de la pantalla
 screen_height = 900  # Tamaño de la pantalla
 nivel = 0
@@ -23,30 +22,12 @@ azul = (0, 0, 255)
 
 # Inicializar pantalla
 pantalla = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption("Poquemon")
+pygame.display.set_caption("Pokemon")
 
-# Cargar imágenes
-frente1 = pygame.image.load("Recursos/frente1.png")
-frente2 = pygame.image.load("Recursos/frente2.png")
-frente3 = pygame.image.load("Recursos/frente3.png")
-espladas1 = pygame.image.load("Recursos/espalda1.png")
-espladas2 = pygame.image.load("Recursos/espalda2.png")
-espladas3 = pygame.image.load("Recursos/espalda3.png")
-derecha1 = pygame.image.load("Recursos/der1.png")
-derecha2 = pygame.image.load("Recursos/der2.png")
-derecha3 = pygame.image.load("Recursos/der3.png")
-izquierda1 = pygame.image.load("Recursos/izq1.png")
-izquierda2 = pygame.image.load("Recursos/izq2.png")
-izquierda3 = pygame.image.load("Recursos/izq3.png")
-background_image = pygame.image.load("fondo.jpeg")
-fondo2 = pygame.image.load("img2.png")
-poquebola = pygame.image.load("Recursos/poquebola-removebg-preview.png")
-
-pantalla_carga = pygame.image.load("pokemon.jpg")
 
 
 # Escalar imágenes si es necesario
-poquebola = pygame.transform.scale(poquebola, (30, 30))
+pokebola = pygame.transform.scale(pokebola, (30, 30))
 
 # Escalar fondo
 background_width, background_height = background_image.get_size()
@@ -60,8 +41,8 @@ coordenadaX = screen_width // 2
 coordenadaY = screen_height // 2
 
 # Coordenadas del objeto adicional
-poquebola_x = 1200  # Coordenada fija en el mapa del fondo
-poquebola_y = 800  # Coordenada fija en el mapa del fondo
+pokebola_x = 1200  # Coordenada fija en el mapa del fondo
+pokebola_y = 800  # Coordenada fija en el mapa del fondo
 
 # Cargar fuente
 font = pygame.font.Font(None, 36)
@@ -147,8 +128,8 @@ while running:
     pantalla.blit(direccion, (coordenadaX, coordenadaY))
     print("x: ", coordenadaX, "y: ", coordenadaY)
 
-    # Dibujar poquebola
-    pantalla.blit(poquebola, (poquebola_x - scroll_x, poquebola_y - scroll_y))
+    # Dibujar pokebola
+    pantalla.blit(pokebola, (pokebola_x - scroll_x, pokebola_y - scroll_y))
 
     # Zona de cambio de nivel
     zona_cambio_nivel = pygame.Rect(xPuerta - scroll_x, yPuerta - scroll_y, 45, 50)
@@ -164,17 +145,17 @@ while running:
 
     # Crear rectángulos para detección de colisión
     rect_personaje = pygame.Rect(coordenadaX, coordenadaY, frente1.get_width(), frente1.get_height())
-    rect_moneda = pygame.Rect(poquebola_x - scroll_x, poquebola_y - scroll_y, 30, 30)
+    rect_moneda = pygame.Rect(pokebola_x - scroll_x, pokebola_y - scroll_y, 30, 30)
 
     # Comprobar colisiones
     if rect_personaje.colliderect(rect_moneda):
         puntuacion += 1
-        mensaje = font.render("Luis ha encontrado una poquebola!!", True, negro)
+        mensaje = font.render("Luis ha encontrado una pokebola!!", True, negro)
         pantalla.blit(mensaje, (screen_width / 2 - 150, screen_height - 50))
         coordenadaX = screen_width // 2
         coordenadaY = screen_height // 2
-        poquebola_x = random.randint(0, new_width - 30)
-        poquebola_y = random.randint(0, new_height - 30)
+        pokebola_x = random.randint(0, new_width - 30)
+        pokebola_y = random.randint(0, new_height - 30)
         pygame.display.update()
         pygame.time.delay(800)
 
