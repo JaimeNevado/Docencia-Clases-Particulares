@@ -174,6 +174,7 @@ while running:
         mensaje = font.render("Pulsa espacio para entrar", True, negro)
         pantalla.blit(mensaje, (350, 550))
         pygame.display.update()
+    
     if rect_personaje.colliderect(zona_cambio_nivel) and nivel == 0 and teclas[pygame.K_SPACE]:
         nivel += 1
         pantalla.blit(pantalla_carga, (0, 0))
