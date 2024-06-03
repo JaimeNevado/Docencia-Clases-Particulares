@@ -8,8 +8,8 @@ from libreriaJuego import *
 pygame.init()
 
 # Configuraciones iniciales
-screen_width = 1200  # Tamaño de la pantalla
-screen_height = 900  # Tamaño de la pantalla
+screen_width = 1184  # Tamaño de la pantalla
+screen_height = 667  # Tamaño de la pantalla
 nivel = 0
 puntuacion = 0
 
@@ -31,10 +31,19 @@ pokebola = pygame.transform.scale(pokebola, (30, 30))
 
 # Escalar fondo
 background_width, background_height = background_image.get_size()
+
+
+anchofondo2, altofondo2 = fondo2.get_size()
+
+
+
 scale_factor = 3
 new_width = int(background_width * scale_factor)
 new_height = int(background_height * scale_factor)
 background_image = pygame.transform.scale(background_image, (new_width, new_height))
+
+
+fondo2 = pygame.transform.scale(fondo2, (anchofondo2 * 1.2, anchofondo2 * 1.2))
 
 # Coordenadas iniciales del personaje en el centro de la pantalla
 coordenadaX = screen_width // 2
@@ -119,10 +128,11 @@ while running:
     contador += 1
 
     # Dibujar fondo
+    
     if nivel == 0:
         pantalla.blit(background_image, (-scroll_x, -scroll_y))
     else:
-        pantalla.blit(fondo2, (0, 0))
+        pantalla.blit(fondo2, (-scroll_x, -scroll_y))
 
     # Dibujar personaje
     pantalla.blit(direccion, (coordenadaX, coordenadaY))
@@ -135,7 +145,7 @@ while running:
     zona_cambio_nivel = pygame.Rect(xPuerta - scroll_x, yPuerta - scroll_y, 45, 50)
 
     # Dibujar puerta (Oscura)
-    pantalla.blit(superficie, (xPuerta - scroll_x, yPuerta - scroll_y))
+    #pantalla.blit(superficie, (xPuerta - scroll_x, yPuerta - scroll_y))
 
 
 
@@ -148,7 +158,7 @@ while running:
     rect_moneda = pygame.Rect(pokebola_x - scroll_x, pokebola_y - scroll_y, 30, 30)
 
     # Comprobar colisiones
-    if rect_personaje.colliderect(rect_moneda):
+    if rect_personaje.colliderect(rect_moneda) and teclas[pygame.K_SPACE]:
         puntuacion += 1
         mensaje = font.render("Luis ha encontrado una pokebola!!", True, negro)
         pantalla.blit(mensaje, (screen_width / 2 - 150, screen_height - 50))
@@ -159,12 +169,15 @@ while running:
         pygame.display.update()
         pygame.time.delay(800)
 
-    if rect_personaje.colliderect(zona_cambio_nivel) and nivel == 0:
-        nivel += 1
-        pantalla.blit(pantalla_carga, (0, 0))
-        mensaje = font.render("!Siguiente Nivel!", True, blanco)
+
+    if rect_personaje.colliderect(zona_cambio_nivel):
+        mensaje = font.render("Pulsa espacio para entrar", True, negro)
         pantalla.blit(mensaje, (350, 550))
         pygame.display.update()
+    if rect_personaje.colliderect(zona_cambio_nivel) and nivel == 0 and teclas[pygame.K_SPACE]:
+        nivel += 1
+        pantalla.blit(pantalla_carga, (0, 0))
+        
         pygame.time.delay(2000)
         coordenadaX = screen_width // 2
         coordenadaY = screen_height // 2

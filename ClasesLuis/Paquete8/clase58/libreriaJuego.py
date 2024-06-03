@@ -15,7 +15,7 @@ izquierda1 = pygame.image.load("Recursos/izq1.png")
 izquierda2 = pygame.image.load("Recursos/izq2.png")
 izquierda3 = pygame.image.load("Recursos/izq3.png")
 background_image = pygame.image.load("fondo.jpeg")
-fondo2 = pygame.image.load("img2.png")
+fondo2 = pygame.image.load("Recursos/interior1.jpeg")
 pokebola = pygame.image.load("Recursos/poquebola-removebg-preview.png")
 
 pantalla_carga = pygame.image.load("pokemon.jpg")
