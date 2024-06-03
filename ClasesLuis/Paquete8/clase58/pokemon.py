@@ -24,26 +24,24 @@ azul = (0, 0, 255)
 pantalla = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Pokemon")
 
-
-
 # Escalar imágenes si es necesario
 pokebola = pygame.transform.scale(pokebola, (30, 30))
 
 # Escalar fondo
 background_width, background_height = background_image.get_size()
 
+# Escalar el primer fondo con un factor de escala de 3
+scale_factor_background = 3
+new_width_background = int(background_width * scale_factor_background)
+new_height_background = int(background_height * scale_factor_background)
+background_image = pygame.transform.scale(background_image, (new_width_background, new_height_background))
 
+# Escalar el segundo fondo con un factor de escala de 1.4
+scale_factor_fondo2 = 1.4
 anchofondo2, altofondo2 = fondo2.get_size()
-
-
-
-scale_factor = 3
-new_width = int(background_width * scale_factor)
-new_height = int(background_height * scale_factor)
-background_image = pygame.transform.scale(background_image, (new_width, new_height))
-
-
-fondo2 = pygame.transform.scale(fondo2, (anchofondo2 * 1.2, anchofondo2 * 1.2))
+new_width_fondo2 = int(anchofondo2 * scale_factor_fondo2)
+new_height_fondo2 = int(altofondo2 * scale_factor_fondo2)
+fondo2 = pygame.transform.scale(fondo2, (new_width_fondo2, new_height_fondo2))
 
 # Coordenadas iniciales del personaje en el centro de la pantalla
 coordenadaX = screen_width // 2
@@ -58,7 +56,6 @@ font = pygame.font.Font(None, 36)
 
 xPuerta = 718
 yPuerta = 765
-
 
 # Velocidad de desplazamiento
 scroll_x = 0
@@ -84,8 +81,8 @@ while running:
     teclas = pygame.key.get_pressed()
 
     if teclas[pygame.K_LEFT]:
-        if coordenadaX > screen_width // 4:
-            coordenadaX -= scroll_speed
+        if coordenadaX > screen_width // 4 or scroll_x == 0:
+            coordenadaX = max(coordenadaX - scroll_speed, 0)
         else:
             scroll_x = max(scroll_x - scroll_speed, 0)
         if suma % 2 == 0:
@@ -93,17 +90,17 @@ while running:
         else:
             direccion = izquierda3
     elif teclas[pygame.K_RIGHT]:
-        if coordenadaX < screen_width * 3 // 4:
-            coordenadaX += scroll_speed
+        if coordenadaX < screen_width * 3 // 4 or scroll_x == (new_width_background if nivel == 0 else new_width_fondo2) - screen_width:
+            coordenadaX = min(coordenadaX + scroll_speed, screen_width - frente1.get_width())
         else:
-            scroll_x = min(scroll_x + scroll_speed, new_width - screen_width)
+            scroll_x = min(scroll_x + scroll_speed, (new_width_background if nivel == 0 else new_width_fondo2) - screen_width)
         if suma % 2 == 0:
             direccion = derecha2
         else:
             direccion = derecha3
     elif teclas[pygame.K_UP]:
-        if coordenadaY > screen_height // 4:
-            coordenadaY -= scroll_speed
+        if coordenadaY > screen_height // 4 or scroll_y == 0:
+            coordenadaY = max(coordenadaY - scroll_speed, 0)
         else:
             scroll_y = max(scroll_y - scroll_speed, 0)
         if suma % 2 == 0:
@@ -111,10 +108,10 @@ while running:
         else:
             direccion = espladas3
     elif teclas[pygame.K_DOWN]:
-        if coordenadaY < screen_height * 3 // 4:
-            coordenadaY += scroll_speed
+        if coordenadaY < screen_height * 3 // 4 or scroll_y == (new_height_background if nivel == 0 else new_height_fondo2) - screen_height:
+            coordenadaY = min(coordenadaY + scroll_speed, screen_height - frente1.get_height())
         else:
-            scroll_y = min(scroll_y + scroll_speed, new_height - screen_height)
+            scroll_y = min(scroll_y + scroll_speed, (new_height_background if nivel == 0 else new_height_fondo2) - screen_height)
         if suma % 2 == 0:
             direccion = frente2
         else:
@@ -128,7 +125,6 @@ while running:
     contador += 1
 
     # Dibujar fondo
-    
     if nivel == 0:
         pantalla.blit(background_image, (-scroll_x, -scroll_y))
     else:
@@ -136,7 +132,7 @@ while running:
 
     # Dibujar personaje
     pantalla.blit(direccion, (coordenadaX, coordenadaY))
-    print("x: ", coordenadaX, "y: ", coordenadaY)
+    print("x: ", coordenadaX - scroll_x, "y: ", coordenadaY - scroll_y)
 
     # Dibujar pokebola
     pantalla.blit(pokebola, (pokebola_x - scroll_x, pokebola_y - scroll_y))
@@ -145,9 +141,7 @@ while running:
     zona_cambio_nivel = pygame.Rect(xPuerta - scroll_x, yPuerta - scroll_y, 45, 50)
 
     # Dibujar puerta (Oscura)
-    #pantalla.blit(superficie, (xPuerta - scroll_x, yPuerta - scroll_y))
-
-
+    pantalla.blit(superficie, (xPuerta - scroll_x, yPuerta - scroll_y))
 
     # Puntuación
     mensaje2 = font.render(f"Puntuacion: {puntuacion}", True, negro)
@@ -164,21 +158,22 @@ while running:
         pantalla.blit(mensaje, (screen_width / 2 - 150, screen_height - 50))
         coordenadaX = screen_width // 2
         coordenadaY = screen_height // 2
-        pokebola_x = random.randint(0, new_width - 30)
-        pokebola_y = random.randint(0, new_height - 30)
+        pokebola_x = random.randint(0, (new_width_background if nivel == 0 else new_width_fondo2) - 30)
+        pokebola_y = random.randint(0, (new_height_background if nivel == 0 else new_height_fondo2) - 30)
         pygame.display.update()
         pygame.time.delay(800)
-
 
     if rect_personaje.colliderect(zona_cambio_nivel):
         mensaje = font.render("Pulsa espacio para entrar", True, negro)
         pantalla.blit(mensaje, (350, 550))
         pygame.display.update()
-    
+
     if rect_personaje.colliderect(zona_cambio_nivel) and nivel == 0 and teclas[pygame.K_SPACE]:
         nivel += 1
-        pantalla.blit(pantalla_carga, (0, 0))
-        
+        pantalla.fill(negro)
+        mensaje = font.render("¡Siguiente Nivel!", True, blanco)
+        pantalla.blit(mensaje, (screen_width // 2 - 100, screen_height // 2))
+        pygame.display.update()
         pygame.time.delay(2000)
         coordenadaX = screen_width // 2
         coordenadaY = screen_height // 2
