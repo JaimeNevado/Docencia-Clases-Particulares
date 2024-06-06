@@ -124,60 +124,106 @@ while running:
 
     contador += 1
 
-    # Dibujar fondo
+
+
+
+    # Gestionar espacios (Dentro o fuera)
     if nivel == 0:
         pantalla.blit(background_image, (-scroll_x, -scroll_y))
+        # Dibujar personaje
+        pantalla.blit(direccion, (coordenadaX, coordenadaY))
+        print("x: ", coordenadaX - scroll_x, "y: ", coordenadaY - scroll_y)
+
+        # Dibujar pokebola
+        pantalla.blit(pokebola, (pokebola_x - scroll_x, pokebola_y - scroll_y))
+
+
+        # Zona de cambio de nivel
+        zona_cambio_nivel = pygame.Rect(xPuerta - scroll_x, yPuerta - scroll_y, 45, 50)
+
+        # Dibujar puerta (Oscura)
+        #pantalla.blit(superficie, (xPuerta - scroll_x, yPuerta - scroll_y))
+
+        # Puntuación
+        mensaje2 = font.render(f"Puntuacion: {puntuacion}", True, negro)
+        pantalla.blit(mensaje2, (screen_width / 2 - 100, 0))
+
+        # Crear rectángulos para detección de colisión
+        rect_personaje = pygame.Rect(coordenadaX, coordenadaY, frente1.get_width(), frente1.get_height())
+        rect_moneda = pygame.Rect(pokebola_x - scroll_x, pokebola_y - scroll_y, 30, 30)
+
+        
+        if rect_personaje.colliderect(zona_cambio_nivel):
+            mensaje = font.render("Pulsa espacio para entrar", True, negro)
+            pantalla.blit(mensaje, (350, 550))
+            pygame.display.update()
+
+        if rect_personaje.colliderect(zona_cambio_nivel) and nivel == 0 and teclas[pygame.K_SPACE]:
+            nivel += 1
+            pantalla.fill(negro)
+            mensaje = font.render("¡Has entrado al gym!", True, negro)
+            pantalla.blit(mensaje, (screen_width // 2 - 100, screen_height // 2))
+            pygame.display.update()
+            pygame.time.delay(2000)
+            coordenadaX = screen_width // 2
+            coordenadaY = screen_height // 2
     else:
+        xPuerta = 600
+        yPuerta = 860
         pantalla.blit(fondo2, (-scroll_x, -scroll_y))
+        # Dibujar personaje
+        pantalla.blit(direccion, (coordenadaX, coordenadaY))
+        print("x: ", coordenadaX - scroll_x, "y: ", coordenadaY - scroll_y)
 
-    # Dibujar personaje
-    pantalla.blit(direccion, (coordenadaX, coordenadaY))
-    print("x: ", coordenadaX - scroll_x, "y: ", coordenadaY - scroll_y)
+        # Dibujar pokebola
+        pantalla.blit(pokebola, (pokebola_x - scroll_x, pokebola_y - scroll_y))
 
-    # Dibujar pokebola
-    pantalla.blit(pokebola, (pokebola_x - scroll_x, pokebola_y - scroll_y))
+        # Zona de cambio de nivel
+        zona_cambio_nivel = pygame.Rect(xPuerta - scroll_x, yPuerta - scroll_y, 45, 50)
 
-    # Zona de cambio de nivel
-    zona_cambio_nivel = pygame.Rect(xPuerta - scroll_x, yPuerta - scroll_y, 45, 50)
+        # Dibujar puerta (Oscura)
+        pantalla.blit(superficie, (xPuerta - scroll_x, yPuerta - scroll_y))
 
-    # Dibujar puerta (Oscura)
-    pantalla.blit(superficie, (xPuerta - scroll_x, yPuerta - scroll_y))
+        # Puntuación
+        mensaje2 = font.render(f"Puntuacion: {puntuacion}", True, negro)
+        pantalla.blit(mensaje2, (screen_width / 2 - 100, 0))
 
-    # Puntuación
-    mensaje2 = font.render(f"Puntuacion: {puntuacion}", True, negro)
-    pantalla.blit(mensaje2, (screen_width / 2 - 100, 0))
+        # Crear rectángulos para detección de colisión
+        rect_personaje = pygame.Rect(coordenadaX, coordenadaY, frente1.get_width(), frente1.get_height())
+        rect_moneda = pygame.Rect(pokebola_x - scroll_x, pokebola_y - scroll_y, 30, 30)
 
-    # Crear rectángulos para detección de colisión
-    rect_personaje = pygame.Rect(coordenadaX, coordenadaY, frente1.get_width(), frente1.get_height())
-    rect_moneda = pygame.Rect(pokebola_x - scroll_x, pokebola_y - scroll_y, 30, 30)
+
+        if rect_personaje.colliderect(zona_cambio_nivel):
+            mensaje = font.render("Pulsa espacio para salir", True, negro)
+            pantalla.blit(mensaje, (350, 550))
+            pygame.display.update()
+
+        if rect_personaje.colliderect(zona_cambio_nivel) and teclas[pygame.K_SPACE]:
+            nivel = 0
+            pantalla.fill(negro)
+            mensaje = font.render("¡Has salido!", True, blanco)
+            pantalla.blit(mensaje, (screen_width // 2 - 100, screen_height // 2))
+            pygame.display.update()
+            pygame.time.delay(2000)
+            coordenadaX = screen_width // 2
+            coordenadaY = screen_height // 2
+            xPuerta = 718
+            yPuerta = 765
+
 
     # Comprobar colisiones
     if rect_personaje.colliderect(rect_moneda) and teclas[pygame.K_SPACE]:
         puntuacion += 1
         mensaje = font.render("Luis ha encontrado una pokebola!!", True, negro)
         pantalla.blit(mensaje, (screen_width / 2 - 150, screen_height - 50))
-        coordenadaX = screen_width // 2
-        coordenadaY = screen_height // 2
+        #coordenadaX = screen_width // 2
+        #coordenadaY = screen_height // 2
         pokebola_x = random.randint(0, (new_width_background if nivel == 0 else new_width_fondo2) - 30)
         pokebola_y = random.randint(0, (new_height_background if nivel == 0 else new_height_fondo2) - 30)
         pygame.display.update()
         pygame.time.delay(800)
 
-    if rect_personaje.colliderect(zona_cambio_nivel):
-        mensaje = font.render("Pulsa espacio para entrar", True, negro)
-        pantalla.blit(mensaje, (350, 550))
-        pygame.display.update()
-
-    if rect_personaje.colliderect(zona_cambio_nivel) and nivel == 0 and teclas[pygame.K_SPACE]:
-        nivel += 1
-        pantalla.fill(negro)
-        mensaje = font.render("¡Siguiente Nivel!", True, blanco)
-        pantalla.blit(mensaje, (screen_width // 2 - 100, screen_height // 2))
-        pygame.display.update()
-        pygame.time.delay(2000)
-        coordenadaX = screen_width // 2
-        coordenadaY = screen_height // 2
-
+    
     pygame.display.update()
     time.sleep(0.01)
 
