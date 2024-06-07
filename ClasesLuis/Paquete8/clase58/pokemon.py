@@ -3,8 +3,19 @@ import sys
 import time
 import random
 from libreriaJuego import *
+import os
+from pydub import AudioSegment
+from pydub.playback import play
+
+# Cargar el archivo de sonido
+ruta_archivo = "/Users/jaimenevado/Desktop/Docencia-Clases-Particulares/ClasesLuis/Paquete8/clase58/Recursos/efectosDeSonido/pikachu.mp3"
+sonido = AudioSegment.from_file(ruta_archivo)
+
+# Reproducir el sonido
+
 
 # Inicialización
+
 pygame.init()
 
 # Configuraciones iniciales
@@ -167,7 +178,7 @@ while running:
             pygame.time.delay(2000)
             coordenadaX = screen_width // 2
             coordenadaY = screen_height // 2
-    else:
+    elif (nivel == 2):
         xPuerta = 600
         yPuerta = 860
         pantalla.blit(fondo2, (-scroll_x, -scroll_y))
@@ -191,6 +202,7 @@ while running:
         # Crear rectángulos para detección de colisión
         rect_personaje = pygame.Rect(coordenadaX, coordenadaY, frente1.get_width(), frente1.get_height())
         rect_moneda = pygame.Rect(pokebola_x - scroll_x, pokebola_y - scroll_y, 30, 30)
+        #play(sonido)
 
 
         if rect_personaje.colliderect(zona_cambio_nivel):
@@ -209,7 +221,8 @@ while running:
             coordenadaY = screen_height // 2
             xPuerta = 718
             yPuerta = 765
-
+    elif (nivel == 3):
+        # Desarollamos
 
     # Comprobar colisiones
     if rect_personaje.colliderect(rect_moneda) and teclas[pygame.K_SPACE]:

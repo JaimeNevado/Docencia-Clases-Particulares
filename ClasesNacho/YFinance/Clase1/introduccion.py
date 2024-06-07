@@ -15,7 +15,7 @@ archivo = open("apple_info.txt", "w")
 
 # Datos históricos de la empresa
 # ['1d', '5d', '1mo', '3mo', '6mo', '1y', '2y', '5y', '10y', 'ytd', 'max']
-hist = ticker.history(period="ytd")
+hist = ticker.history(period="1y")
 
 fechas = []
 valores = hist["Close"].tolist()
@@ -32,6 +32,5 @@ plt.ylabel("Precio")
 plt.title("Valores de Apple")
 
 plt.show()
-
 
 
