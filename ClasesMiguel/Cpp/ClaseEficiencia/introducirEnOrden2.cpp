@@ -52,7 +52,7 @@ int insertarEnOrden(ListaEnlazada &lista, int elemento)
 int main()
 {
 	ListaEnlazada lista = generarListaAscendente(1000);
-	int elemento = 462;
+	int elemento = 1999;
 
 	int vueltas = insertarEnOrden(lista, elemento);
 
